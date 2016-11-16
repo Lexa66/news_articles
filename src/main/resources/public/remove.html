@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+<script>
+    var myApp = angular.module("myApp", []);
+    myApp.controller("HttpController", function ($scope, $http) {
+
+        $scope.UpdateData = function () {
+            var data = $.param({
+                id: $scope.id
+
+            });
+
+            $http.get('http://localhost:8099/delete/?'+ data)
+                    .success(function (data) {
+                        $scope.ServerResponse = data;
+                    })
+
+        };
+    });
+</script>
+<div ng-app="myApp" ng-controller="HttpController">
+    <h2>Delete the news articles </h2>
+    <br/>
+    <form ng-submit="UpdateData()">
+        <p> Id: <input type="text" name="body" ng-model="id" required /></p>
+        <br/>
+        <button type="submit" class="btn btn-success">Delete</button>
+        <hr />
+        {{ ServerResponse }}
+    </form>
+</div>
+</html>

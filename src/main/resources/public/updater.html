@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+<script>
+    var myApp = angular.module("myApp", []);
+    myApp.controller("HttpPutController", function ($scope, $http) {
+
+        $scope.UpdateData = function () {
+            var data = $.param({
+                id: $scope.id,
+                body: $scope.body,
+                name: $scope.name
+
+            });
+
+            $http.put('http://localhost:8099/update/?'+ data)
+                    .success(function (data) {
+                        $scope.ServerResponse = data;
+                    })
+
+        };
+    });
+</script>
+<div ng-app="myApp" ng-controller="HttpPutController">
+    <h2>Update the news articles </h2>
+    <br/>
+    <form ng-submit="UpdateData()">
+        <p> Id: <input type="text" name="body" ng-model="id" required /></p>
+        <br/>
+        <p> Body: <input type="text" name="body" ng-model="body" required /></p>
+        <br/>
+        <p> Name: <input type="text" name="name" ng-model="name" required /></p>
+        <br/>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <hr />
+        {{ ServerResponse }}
+    </form>
+</div>
+</html>
