@@ -8,7 +8,7 @@
     var myApp = angular.module("myApp", []);
     myApp.controller("HttpController", function ($scope, $http) {
 
-        $scope.UpdateData = function () {
+        $scope.DelData = function () {
             var data = $.param({
                 id: $scope.id
 
@@ -18,14 +18,13 @@
                     .success(function (data) {
                         $scope.ServerResponse = data;
                     })
-
         };
     });
 </script>
 <div ng-app="myApp" ng-controller="HttpController">
     <h2>Delete the news articles </h2>
     <br/>
-    <form ng-submit="UpdateData()">
+    <form ng-submit="DelData()">
         <p> Id: <input type="text" name="body" ng-model="id" required /></p>
         <br/>
         <button type="submit" class="btn btn-success">Delete</button>

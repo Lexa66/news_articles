@@ -13,7 +13,6 @@
     <a href="article1.html"><button type="button" class="btn btn-primary">Push №1</button></a>
        <a href="article2.html"><button type="button" class="btn btn-info">Push №2</button></a>
     <a href="article3.html"><button type="button" class="btn btn-primary">Push №3</button></a>
-
 </div>
 
 <script>
