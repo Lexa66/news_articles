@@ -35,7 +35,7 @@ public class ArticleController {
 
     @RequestMapping("/update")
     @ResponseBody
-    public Object updateArticle(long id, String body, String name) {
+    public Response updateArticle(long id, String body, String name) {
 
         Article article = articleDao.findOne(id);
 
@@ -44,10 +44,10 @@ public class ArticleController {
             article.setBody(body);
             article.setName(name);
             articleDao.save(article);
-            return  article;
+            return new Response("User successfully updated", article);
         }
         else {
-            return ("Article not found");
+            return new Response("User not found", null);
         }
     }
 
