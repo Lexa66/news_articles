@@ -44,7 +44,7 @@ public class ArticleController {
             article.setBody(body);
             article.setName(name);
             articleDao.save(article);
-            return new Response("User successfully updated", article);
+            return new Response("Article successfully updated", article);
         }
         else {
             return new Response("Article not found", null);
@@ -60,7 +60,7 @@ public class ArticleController {
         if(article != null) {
 
             articleDao.delete(article);
-            return new Response("User successfully deleted", article);
+            return new Response("Article successfully deleted", article);
         }
         else {
             return new Response("Article not found", null);
