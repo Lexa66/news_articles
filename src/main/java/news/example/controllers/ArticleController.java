@@ -47,7 +47,7 @@ public class ArticleController {
             return new Response("User successfully updated", article);
         }
         else {
-            return new Response("User not found", null);
+            return new Response("Article not found", null);
         }
     }
 
@@ -63,7 +63,7 @@ public class ArticleController {
             return new Response("User successfully deleted", article);
         }
         else {
-            return new Response("User not found", null);
+            return new Response("Article not found", null);
         }
     }
 }
